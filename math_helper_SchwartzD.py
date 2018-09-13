@@ -17,5 +17,5 @@ from formula ax^2+bx+c
     if b**2-4*a*c>=0:
         answer1=(sqrt(b**2-4*a*c)-b)/(2*a)
         answer2=(sqrt(b**2-4*a*c)*-1-b)/(2*a)
-    return answer1
+    return answer1, answer2
 print(quadratic(6,-7,-3))
