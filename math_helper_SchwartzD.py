@@ -1,5 +1,4 @@
 from math import sqrt
-from math import floor
 '''
 formula examples go
 here
@@ -27,6 +26,13 @@ def distance(x,y,x1,y1):
     y_squaredist=(y-y1)**2
     dist=sqrt(x_squaredist+y_squaredist)
     return dist
-def comp_interest(initial_amount,percent_interest,comp_per_year,years):
-    return
-print(quadratic(-6,-7,-3))
+def comp_interest(initial,percent,compounded,years):
+    if years<0:
+        return "Error: Cannot have negative years"
+    if compounded<=0:
+        return "Error: Cannot compound 0 or less times annually"
+    amount=initial*(1+(percent/100)/compounded)**(compounded*years)
+    return round(amount,2)
+def geometric_nth_term(given,first,common_ratio):
+    nth_term=first*common_ratio**(given-1)
+    return nth_term
