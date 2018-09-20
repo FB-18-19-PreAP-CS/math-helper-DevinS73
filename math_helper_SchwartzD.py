@@ -1,8 +1,17 @@
 from math import sqrt
-'''
-formula examples go
-here
-'''
+from decimal import Decimal, getcontext
+#nthroot from https://rosettacode.org/wiki/Nth_root#Python
+def nthroot (n, A, precision):
+    getcontext().prec = precision
+ 
+    n = Decimal(n)
+    x_0 = A / n #step 1: make a while guess.
+    x_1 = 1     #need it to exist before step 2
+    while True:
+        #step 2:
+        x_0, x_1 = x_1, (1 / n)*((n - 1)*x_0 + (A / (x_0 ** (n - 1))))
+        if x_0 == x_1:
+            return x_1
 def quadratic(a,b,c):
     '''returns answer when given a, b, and c
        from formula ax^2+bx+c
@@ -36,3 +45,10 @@ def comp_interest(initial,percent,compounded,years):
 def geometric_nth_term(given,first,common_ratio):
     nth_term=first*common_ratio**(given-1)
     return nth_term
+def geometric_first(term1,value1,term2,value2):
+    if term1>term2:
+        r=nthroot(term1-term2,value1/value2,20)
+        answer=value2
+    if term2>term1:
+        r=nthroot(term2-term1,value2/value1,20)
+        answer=value1
