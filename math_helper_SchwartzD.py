@@ -1,7 +1,6 @@
 from math import sqrt
 from decimal import Decimal, getcontext
 import doctest
-doctest.testmod()
 #nthroot from https://rosettacode.org/wiki/Nth_root#Python (used in geometric_first)
 def nthroot (n, A, precision):
     getcontext().prec = precision
@@ -151,12 +150,32 @@ def geometric_nth_term(given,first,common_ratio):
     return round(nth_term,4)
 def geometric_first(term1,value1,term2,value2):
     ''' returns the first term of a geometric sequence given 
-        two values and the number of the list at which they appear
-    >>> geometric_nth_term(12,34e100,56**5600,98e97)
+        two values and the number of the list at which they appear.
+        Values can vary from true values by .00001
+        
+    >>> geometric_first(12,34e100,56**5600,98e97)
     Traceback (most recent call last):
         ...
     OverflowError: One or more of the variables is too large
-
+    
+    >>> geometric_first(4,16,5,32)
+    Decimal('2')
+    
+    >>> geometric_first(1,6,100000,243542)
+    Decimal('6')
+    
+    >>> geometric_first(6,1/112,10,1/1792)
+    Decimal('0.28572')
+    
+    >>> geometric_first(6.2,121,10.5,42)
+    Traceback (most recent call last):
+        ...
+    ValueError: Both terms must be whole numbers
+    
+    >>> geometric_first(-2,7,-33,232)
+    Traceback (most recent call last):
+        ...
+    ValueError: Neither term can be less than or equal to 0
     '''
     if term1+1==term1 or value1+1==value1 or term2+1==term2 or value2+1==value2:
         raise OverflowError('One or more of the variables is too large')
@@ -175,9 +194,9 @@ def geometric_first(term1,value1,term2,value2):
     if term1-term1//1!=0 or term2-term2//1!=0:
         raise ValueError('Both terms must be whole numbers')
     if term1==1:
-        return value1
+        return Decimal(value1)
     if term2==2:
-        return value2
+        return Decimal(value2)
     if term1>term2:
         r=nthroot(term1-term2,value1/value2,5)
         answer=Decimal(value2)
@@ -197,6 +216,15 @@ def use_quadratic():
     a=float(input('Enter the value of a: '))
     b=float(input('Enter the value of b: '))
     c=float(input('Enter the value of c: '))
+#    try:
+#        if len(quadratic(a,b,c))==2:
+#            print(f"The answers for the provided quadratic values are {quadratic(a,b,c)[0]} and {quadratic(a,b,c)[1]}.")
+#            break
+#        if len(quadratic(a,b,c))==1:
+#            print(f"The answer for the provided quadratic values is {quadratic(a,b,c)}")
+#            break
+#        except Exception as e:
+#            print(f"Error: {e}")
 def use_distance():
     x=float(input('Enter the x value of the first point: '))
     y=float(input('Enter the y value of the first point: '))
@@ -241,3 +269,4 @@ def interface():
             break
         else:
             print('You have entered an invalid input, please try again')
+doctest.testmod()
