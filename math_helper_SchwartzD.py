@@ -278,7 +278,7 @@ def interface():
         print('3. Use compound interest')
         print('4. Find the nth term of a geometric sequence')
         print('5. Find the first term of a geometric sequence')
-        print('6. Cancel')
+        print('X. Cancel')
         selection=input('> ')
         if selection=='1':
             use_quadratic()
@@ -290,7 +290,7 @@ def interface():
             use_geometric_nth_term()
         elif selection=='5':
             use_geometric_first()
-        elif selection=='6':
+        elif selection=='x' or selection=='X':
             break
         else:
             print('You have entered an invalid input, please try again.')
