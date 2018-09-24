@@ -212,49 +212,74 @@ def geometric_first(term1,value1,term2,value2):
     if negative_ratio==True:
         return -1*answer
 def use_quadratic():
-    print('quadratic equation: ax^2+bx+c')
-    a=float(input('Enter the value of a: '))
-    b=float(input('Enter the value of b: '))
-    c=float(input('Enter the value of c: '))
-#    try:
-#        if len(quadratic(a,b,c))==2:
-#            print(f"The answers for the provided quadratic values are {quadratic(a,b,c)[0]} and {quadratic(a,b,c)[1]}.")
-#            break
-#        if len(quadratic(a,b,c))==1:
-#            print(f"The answer for the provided quadratic values is {quadratic(a,b,c)}")
-#            break
-#        except Exception as e:
-#            print(f"Error: {e}")
+    while True:
+        print('')
+        print('Quadratic equation: ax^2+bx+c')
+        a=float(input('Enter the value of a: '))
+        b=float(input('Enter the value of b: '))
+        c=float(input('Enter the value of c: '))
+        print('')
+        try:
+            if type(quadratic(a,b,c))==float:
+                print(f"The answer for the provided quadratic values is {quadratic(a,b,c)}.")
+                return
+            if len(quadratic(a,b,c))==2:
+                print(f"The answers for the provided quadratic values are {quadratic(a,b,c)[0]} and {quadratic(a,b,c)[1]}.")
+                return
+        except Exception as e:
+            print(f"Error: {e}")
 def use_distance():
     x=float(input('Enter the x value of the first point: '))
     y=float(input('Enter the y value of the first point: '))
     x1=float(input('Enter the x value of the second point: '))
-    xy=float(input('Enter the y value of the second point: '))
+    y1=float(input('Enter the y value of the second point: '))
+    print('')
+    try:
+        print(f"The distance between the points ({x},{y}) and ({x1},{y1}) is {distance(x,y,x1,y1)}.")
+    except Exception as e:
+        print(f"Error: {e}")
 def use_comp_interest():
     initial=float(input('Enter the initial principal (amount of money): '))
     percent=float(input('Enter the percent of interest: '))
     compounded=float(input('Enter the number of times the amount is compounded annually: '))
     years=float(input('Enter the amount of years forward you would like to calculate: '))
+    print('')
+    try:
+        print(f"After {years} year(s), with an interest rate of {percent}% compounded \n {compounded} times a year, ${initial} will become ${comp_interest(initial, percent, compounded,years)}.")
+        return
+    except Exception as e:
+        print(f"Error: {e}")
 def use_geometric_nth_term():
     first=float(input('Enter the first term of the sequence: '))
     common_ratio=float(input('Enter the common ratio between terms in the sequence: '))
     given=float(input('Enter the number of the term you would like to find: '))
+    print('')
+    try:
+        print(f"Term number {given} of a geometric sequence with the first term {first} and the \n common ratio {common_ratio} is {geometric_nth_term(given,first,common_ratio)}.")
+    except Exception as e:
+        print(f"Error: {e}")
 def use_geometric_first():
-    term1=float(input('Enter the number of the first known term: '))
+    term1=float(input('Enter the term number of the first known term: '))
     value1=float(input('Enter the value of the first known term: '))
-    term2=float(input('Enter the number of the second known term: '))
+    term2=float(input('Enter the term number of the second known term: '))
     value2=float(input('Enter the value of the second known term: '))
+    print('')
+    try:
+        print(f"The first term of a geometric sequence with a value of {value1} at term {term1} and a value of {value2} at term {term2} is {geometric_first(term1,value1,term2,value2)}.")
+    except Exception as e:
+        print(f"Error: {e}")
 def interface():
-    print('Welcome to Math Helper v0.8')
-    print('Input the number of the function you would like to use.')
-    print('1. Find the value of a quadratic equation')
-    print('2. Find the distance between two points')
-    print('3. Use compound interest')
-    print('4. Find the nth term of a geometric sequence')
-    print('5. Find the first term of a geometric sequence')
-    print('6. Cancel')
     while True:
-        selection=input('>')
+        print(' ')
+        print('Welcome to Math Helper v0.8')
+        print('Input the number of the function you would like to use.')
+        print('1. Find the value of a quadratic equation')
+        print('2. Find the distance between two points')
+        print('3. Use compound interest')
+        print('4. Find the nth term of a geometric sequence')
+        print('5. Find the first term of a geometric sequence')
+        print('6. Cancel')
+        selection=input('> ')
         if selection=='1':
             use_quadratic()
         elif selection=='2':
@@ -268,5 +293,7 @@ def interface():
         elif selection=='6':
             break
         else:
-            print('You have entered an invalid input, please try again')
-doctest.testmod()
+            print('You have entered an invalid input, please try again.')
+if __name__=='__main__':
+    doctest.testmod()
+    interface()
