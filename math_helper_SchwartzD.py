@@ -215,59 +215,99 @@ def use_quadratic():
     while True:
         print('')
         print('Quadratic equation: ax^2+bx+c')
-        a=float(input('Enter the value of a: '))
-        b=float(input('Enter the value of b: '))
-        c=float(input('Enter the value of c: '))
+        a=input('Enter the value of a: ')
+        b=input('Enter the value of b: ')
+        c=input('Enter the value of c: ')
         print('')
         try:
-            if type(quadratic(a,b,c))==float:
-                print(f"The answer for the provided quadratic values is {quadratic(a,b,c)}.")
-                return
-            if len(quadratic(a,b,c))==2:
-                print(f"The answers for the provided quadratic values are {quadratic(a,b,c)[0]} and {quadratic(a,b,c)[1]}.")
-                return
+            a=float(a)
+            b=float(b)
+            c=float(c)
+        except Exception as e:
+            print('Error: One or more of the inputs was invalid')
+        if type(a)==float and type(b)==float and type(c)==float:
+            try:
+                if type(quadratic(a,b,c))==float:
+                    print(f"The answer for the provided quadratic values is {quadratic(a,b,c)}.")
+                    return
+                if len(quadratic(a,b,c))==2:
+                    print(f"The answers for the provided quadratic values are {quadratic(a,b,c)[0]} and {quadratic(a,b,c)[1]}.")
+                    return
+            except Exception as e:
+                print(f"Error: {e}")
+def use_distance():
+    while True:
+        print('')
+        x=input('Enter the x value of the first point: ')
+        y=input('Enter the y value of the first point: ')
+        x1=input('Enter the x value of the second point: ')
+        y1=input('Enter the y value of the second point: ')
+        print('')
+        try:
+            x=float(x)
+            y=float(y)
+            x1=float(x1)
+            y1=float(y1)
+        except Exception as e:
+            print('Error: One or more of the inputs was invalid')
+        if type(x)==float and type(y)==float and type(x1)==float and type(y1)==float:
+            try:
+                print(f"The distance between the points ({x},{y}) and ({x1},{y1}) is {distance(x,y,x1,y1)}.")
+            except Exception as e:
+                print(f"Error: {e}")
+def use_comp_interest():
+    initial=input('Enter the initial principal (amount of money): ')
+    percent=input('Enter the percent of interest: ')
+    compounded=input('Enter the number of times the amount is compounded annually: ')
+    years=input('Enter the amount of years forward you would like to calculate: ')
+    print('')
+    try:
+        initial=float(initial)
+        percent=float(percent)
+        compounded=float(compounded)
+        years=float(years)
+    except Exception as e:
+        print('Error: One or more of the inputs was invalid')
+    if type(initial)==float and type(percent)==float and type(compounded)==float and type(years)==float:
+        try:
+            print(f"After {years} year(s), with an interest rate of {percent}% compounded \n {compounded} times a year, ${initial} will become ${comp_interest(initial, percent, compounded,years)}.")
+            return
         except Exception as e:
             print(f"Error: {e}")
-def use_distance():
-    x=float(input('Enter the x value of the first point: '))
-    y=float(input('Enter the y value of the first point: '))
-    x1=float(input('Enter the x value of the second point: '))
-    y1=float(input('Enter the y value of the second point: '))
-    print('')
-    try:
-        print(f"The distance between the points ({x},{y}) and ({x1},{y1}) is {distance(x,y,x1,y1)}.")
-    except Exception as e:
-        print(f"Error: {e}")
-def use_comp_interest():
-    initial=float(input('Enter the initial principal (amount of money): '))
-    percent=float(input('Enter the percent of interest: '))
-    compounded=float(input('Enter the number of times the amount is compounded annually: '))
-    years=float(input('Enter the amount of years forward you would like to calculate: '))
-    print('')
-    try:
-        print(f"After {years} year(s), with an interest rate of {percent}% compounded \n {compounded} times a year, ${initial} will become ${comp_interest(initial, percent, compounded,years)}.")
-        return
-    except Exception as e:
-        print(f"Error: {e}")
 def use_geometric_nth_term():
-    first=float(input('Enter the first term of the sequence: '))
-    common_ratio=float(input('Enter the common ratio between terms in the sequence: '))
-    given=float(input('Enter the number of the term you would like to find: '))
+    first=input('Enter the first term of the sequence: ')
+    common_ratio=input('Enter the common ratio between terms in the sequence: ')
+    given=input('Enter the number of the term you would like to find: ')
     print('')
     try:
-        print(f"Term number {given} of a geometric sequence with the first term {first} and the \n common ratio {common_ratio} is {geometric_nth_term(given,first,common_ratio)}.")
+        first=float(first)
+        common_ratio=float(common_ratio)
+        given=float(given)
     except Exception as e:
-        print(f"Error: {e}")
+        print('Error: One or more of the inputs was invalid')
+    if type(first)==float and type(common_ratio)==float and type(given)==float:
+        try:
+            print(f"Term number {given} of a geometric sequence with the first term {first} and the \n common ratio {common_ratio} is {geometric_nth_term(given,first,common_ratio)}.")
+        except Exception as e:
+            print(f"Error: {e}")
 def use_geometric_first():
-    term1=float(input('Enter the term number of the first known term: '))
-    value1=float(input('Enter the value of the first known term: '))
-    term2=float(input('Enter the term number of the second known term: '))
-    value2=float(input('Enter the value of the second known term: '))
+    term1=input('Enter the term number of the first known term: ')
+    value1=input('Enter the value of the first known term: ')
+    term2=input('Enter the term number of the second known term: ')
+    value2=input('Enter the value of the second known term: ')
     print('')
     try:
-        print(f"The first term of a geometric sequence with a value of {value1} at term {term1} and a value of {value2} at term {term2} is {geometric_first(term1,value1,term2,value2)}.")
+        term1=float(term1)
+        value1=float(value1)
+        term2=float(term2)
+        value2=float(value2)
     except Exception as e:
-        print(f"Error: {e}")
+        print('Error: One or more of the inputs was invalid')
+    if type(first)==float and type(common_ratio)==float and type(given)==float:
+        try:
+            print(f"The first term of a geometric sequence with a value of {value1} at term {term1} and a value of {value2} at term {term2} is {geometric_first(term1,value1,term2,value2)}.")
+        except Exception as e:
+            print(f"Error: {e}")
 def interface():
     while True:
         print(' ')
