@@ -212,6 +212,7 @@ def geometric_first(term1,value1,term2,value2):
     if negative_ratio==True:
         return -1*answer
 def use_quadratic():
+    print()
     while True:
         print('')
         print('Quadratic equation: ax^2+bx+c')
@@ -224,7 +225,7 @@ def use_quadratic():
             b=float(b)
             c=float(c)
         except Exception as e:
-            print('Error: One or more of the inputs was invalid')
+            print('Error: One or more of the inputs was invalid.')
         if type(a)==float and type(b)==float and type(c)==float:
             try:
                 if type(quadratic(a,b,c))==float:
@@ -236,6 +237,7 @@ def use_quadratic():
             except Exception as e:
                 print(f"Error: {e}")
 def use_distance():
+    print()
     while True:
         print('')
         x=input('Enter the x value of the first point: ')
@@ -249,13 +251,14 @@ def use_distance():
             x1=float(x1)
             y1=float(y1)
         except Exception as e:
-            print('Error: One or more of the inputs was invalid')
+            print('Error: One or more of the inputs was invalid.')
         if type(x)==float and type(y)==float and type(x1)==float and type(y1)==float:
             try:
                 print(f"The distance between the points ({x},{y}) and ({x1},{y1}) is {distance(x,y,x1,y1)}.")
             except Exception as e:
                 print(f"Error: {e}")
 def use_comp_interest():
+    print()
     initial=input('Enter the initial principal (amount of money): ')
     percent=input('Enter the percent of interest: ')
     compounded=input('Enter the number of times the amount is compounded annually: ')
@@ -267,7 +270,7 @@ def use_comp_interest():
         compounded=float(compounded)
         years=float(years)
     except Exception as e:
-        print('Error: One or more of the inputs was invalid')
+        print('Error: One or more of the inputs was invalid.')
     if type(initial)==float and type(percent)==float and type(compounded)==float and type(years)==float:
         try:
             print(f"After {years} year(s), with an interest rate of {percent}% compounded \n {compounded} times a year, ${initial} will become ${comp_interest(initial, percent, compounded,years)}.")
@@ -275,6 +278,7 @@ def use_comp_interest():
         except Exception as e:
             print(f"Error: {e}")
 def use_geometric_nth_term():
+    print()
     first=input('Enter the first term of the sequence: ')
     common_ratio=input('Enter the common ratio between terms in the sequence: ')
     given=input('Enter the number of the term you would like to find: ')
@@ -284,13 +288,15 @@ def use_geometric_nth_term():
         common_ratio=float(common_ratio)
         given=float(given)
     except Exception as e:
-        print('Error: One or more of the inputs was invalid')
+        print('Error: One or more of the inputs was invalid.')
     if type(first)==float and type(common_ratio)==float and type(given)==float:
         try:
             print(f"Term number {given} of a geometric sequence with the first term {first} and the \n common ratio {common_ratio} is {geometric_nth_term(given,first,common_ratio)}.")
         except Exception as e:
             print(f"Error: {e}")
 def use_geometric_first():
+    print()
+    print('Values can vary from true values by .00001')
     term1=input('Enter the term number of the first known term: ')
     value1=input('Enter the value of the first known term: ')
     term2=input('Enter the term number of the second known term: ')
@@ -302,7 +308,7 @@ def use_geometric_first():
         term2=float(term2)
         value2=float(value2)
     except Exception as e:
-        print('Error: One or more of the inputs was invalid')
+        print('Error: One or more of the inputs was invalid.')
     if type(first)==float and type(common_ratio)==float and type(given)==float:
         try:
             print(f"The first term of a geometric sequence with a value of {value1} at term {term1} and a value of {value2} at term {term2} is {geometric_first(term1,value1,term2,value2)}.")
